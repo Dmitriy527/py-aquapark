@@ -4,7 +4,7 @@ from abc import ABC
 
 
 class IntegerRange:
-    def __init__(self, min_amount: float, max_amount: float) -> None:
+    def __init__(self, min_amount: int, max_amount: int) -> None:
         self.min_amount = min_amount
         self.max_amount = max_amount
 
@@ -17,7 +17,7 @@ class IntegerRange:
         return value
 
     def __set__(self, obj: Any, value: Any) -> None:
-        if not isinstance(value, int | float):
+        if not isinstance(value, int):
             raise TypeError
         if not (self.min_amount <= value <= self.max_amount):
             raise ValueError
@@ -28,9 +28,9 @@ class Visitor:
     def __init__(
             self,
             name: str,
-            age: float,
-            weight: float,
-            height: float
+            age: int,
+            weight: int,
+            height: int
     ) -> None:
         self.name = name
         self.age = age
